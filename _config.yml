@@ -1,0 +1,57 @@
+# ============================
+# THÔNG TIN CHUNG
+# ============================
+title: "DNH // Malware Journal"
+description: "Nhật ký học Malware Analysis — writeups, notes, và những gì tôi học được mỗi ngày"
+author: "donghung2202"
+email: ""
+
+# Đổi thành domain thật nếu có, hoặc để trống nếu dùng github.io
+url: ""
+baseurl: ""
+
+# ============================
+# THEME GỐC (dùng minima làm nền, mình override toàn bộ màu bằng CSS riêng)
+# ============================
+theme: minima
+minima:
+  skin: dark   # bật sẵn skin tối của minima, CSS custom sẽ đè thêm màu
+  nav_pages:
+    - about.md
+
+# ============================
+# PLUGINS được GitHub Pages hỗ trợ sẵn (không cần Actions)
+# ============================
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ============================
+# SOCIAL LINKS (hiện ở footer)
+# ============================
+github_username: donghung2202
+
+# ============================
+# SYNTAX HIGHLIGHT cho code / log / hex dump
+# ============================
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# ============================
+# CẤU TRÚC BÀI VIẾT
+# ============================
+permalink: /:year/:month/:day/:title/
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"

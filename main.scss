@@ -1,0 +1,189 @@
+---
+# Front matter bắt buộc để Jekyll xử lý file SCSS này — đừng xóa 3 dòng --- này
+---
+
+@import "minima";
+
+/* ============================================
+   BẢNG MÀU - đổi các mã hex bên dưới để đổi tông màu
+   ============================================ */
+:root {
+  --bg-main: #0d1117;        /* nền chính - đen xanh đậm kiểu terminal */
+  --bg-card: #161b22;        /* nền card/box */
+  --bg-code: #0a0e14;        /* nền code block */
+  --text-main: #c9d1d9;      /* chữ chính */
+  --text-muted: #8b949e;     /* chữ phụ */
+  --accent-purple: #bc8cff;  /* tím */
+  --accent-cyan: #56d4dd;    /* xanh cyan */
+  --accent-pink: #ff7ab6;    /* hồng */
+  --accent-green: #7ee787;   /* xanh lá - dùng cho highlight "success" */
+  --accent-orange: #ffa657;  /* cam - dùng cho cảnh báo/IOC */
+  --border-color: #30363d;
+}
+
+/* ============================================
+   NỀN & CHỮ TỔNG THỂ
+   ============================================ */
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent-pink);
+  text-decoration: underline;
+}
+
+/* ============================================
+   HEADER - gradient nhiều màu làm điểm nhấn
+   ============================================ */
+.site-header {
+  background: var(--bg-card);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan), var(--accent-pink)) 1;
+}
+
+.site-title,
+.site-title:visited {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.site-nav .page-link {
+  color: var(--text-main);
+  font-weight: 600;
+}
+.site-nav .page-link:hover {
+  color: var(--accent-pink);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+/* ============================================
+   TIÊU ĐỀ BÀI VIẾT & HEADING - mỗi cấp 1 màu accent khác nhau
+   ============================================ */
+h1 { color: var(--accent-purple); }
+h2 { color: var(--accent-cyan); border-bottom: 1px solid var(--border-color); padding-bottom: 0.3rem; }
+h3 { color: var(--accent-pink); }
+h4, h5, h6 { color: var(--accent-orange); }
+
+.post-title {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   DANH SÁCH BÀI VIẾT (trang chủ)
+   ============================================ */
+.post-list > li {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.post-list > li:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-cyan);
+}
+
+/* ============================================
+   CODE BLOCK - quan trọng cho blog malware analysis
+   (log, hex dump, disassembly, script)
+   ============================================ */
+pre, code {
+  background: var(--bg-code) !important;
+  color: #e6edf3;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.15rem 0.4rem;
+  font-size: 0.9em;
+}
+
+/* Syntax highlight màu (rouge) */
+.highlight .c  { color: #6a737d; font-style: italic; } /* comment */
+.highlight .s  { color: var(--accent-green); }          /* string */
+.highlight .k  { color: var(--accent-purple); }         /* keyword */
+.highlight .nf { color: var(--accent-cyan); }            /* function */
+.highlight .mi { color: var(--accent-orange); }          /* number */
+.highlight .nb { color: var(--accent-pink); }             /* built-in */
+
+/* ============================================
+   BLOCKQUOTE - dùng để nhấn IOC / cảnh báo / lưu ý
+   ============================================ */
+blockquote {
+  border-left: 4px solid var(--accent-orange);
+  background: rgba(255, 166, 87, 0.08);
+  color: var(--text-main);
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+}
+
+/* ============================================
+   BẢNG (dùng cho bảng IOC, hash, TTP...)
+   ============================================ */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table th {
+  background: var(--bg-card);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem;
+}
+table td {
+  border: 1px solid var(--border-color);
+  padding: 0.6rem;
+}
+table tr:nth-child(even) {
+  background: rgba(255,255,255,0.02);
+}
+
+/* ============================================
+   TAG / CATEGORY BADGE
+   ============================================ */
+.tag-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+  color: #0d1117;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  margin-right: 0.4rem;
+}
